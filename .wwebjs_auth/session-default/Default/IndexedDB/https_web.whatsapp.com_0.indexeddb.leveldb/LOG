@@ -1,31 +1,31 @@
-2025/12/22-19:01:03.731 121 Reusing MANIFEST /home/runner/workspace/.wwebjs_auth/session-default/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2025/12/22-19:01:03.732 121 Recovering log #393
-2025/12/22-19:01:03.952 121 Reusing old log /home/runner/workspace/.wwebjs_auth/session-default/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000393.log 
-2025/12/22-19:01:06.535 128 Level-0 table #407: started
-2025/12/22-19:01:06.554 128 Level-0 table #407: 330386 bytes OK
-2025/12/22-19:01:06.585 128 Delete type=0 #393
-2025/12/22-19:01:06.587 122 Manual compaction at level-0 from '\x00*\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00+\x00\x00\x00' @ 0 : 0; will stop at (end)
-2025/12/22-19:01:06.628 129 Compacting 1@1 + 10@2 files
-2025/12/22-19:01:06.751 129 Generated table #408@1: 53916 keys, 2207519 bytes
-2025/12/22-19:01:07.244 129 Generated table #409@1: 36274 keys, 2201886 bytes
-2025/12/22-19:01:07.490 129 Generated table #410@1: 2823 keys, 2168266 bytes
-2025/12/22-19:01:07.967 129 Generated table #411@1: 3476 keys, 2166969 bytes
-2025/12/22-19:01:08.175 129 Generated table #412@1: 3434 keys, 2166511 bytes
-2025/12/22-19:01:08.675 129 Generated table #413@1: 22720 keys, 2216659 bytes
-2025/12/22-19:01:08.921 129 Generated table #414@1: 27016 keys, 2261663 bytes
-2025/12/22-19:01:09.254 129 Generated table #415@1: 44313 keys, 2203712 bytes
-2025/12/22-19:01:09.666 129 Generated table #416@1: 103653 keys, 2254698 bytes
-2025/12/22-19:01:09.702 129 Generated table #417@1: 7111 keys, 158175 bytes
-2025/12/22-19:01:09.702 129 Compacted 1@1 + 10@2 files => 20006058 bytes
-2025/12/22-19:01:09.708 129 compacted to: files[ 0 0 10 0 0 0 0 ]
-2025/12/22-19:01:09.709 129 Delete type=2 #395
-2025/12/22-19:01:09.709 129 Delete type=2 #396
-2025/12/22-19:01:09.709 129 Delete type=2 #397
-2025/12/22-19:01:09.709 129 Delete type=2 #398
-2025/12/22-19:01:09.709 129 Delete type=2 #399
-2025/12/22-19:01:09.709 129 Delete type=2 #400
-2025/12/22-19:01:09.709 129 Delete type=2 #401
-2025/12/22-19:01:09.710 129 Delete type=2 #402
-2025/12/22-19:01:09.710 129 Delete type=2 #403
-2025/12/22-19:01:09.710 129 Delete type=2 #404
-2025/12/22-19:01:09.710 129 Delete type=2 #407
+2025/12/22-22:35:40.078 55f Reusing MANIFEST /home/runner/workspace/.wwebjs_auth/session-default/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/12/22-22:35:40.079 55f Recovering log #406
+2025/12/22-22:35:40.126 55f Reusing old log /home/runner/workspace/.wwebjs_auth/session-default/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000406.log 
+2025/12/22-22:35:41.841 565 Level-0 table #420: started
+2025/12/22-22:35:41.891 565 Level-0 table #420: 1080600 bytes OK
+2025/12/22-22:35:41.899 565 Delete type=0 #406
+2025/12/22-22:35:41.902 55f Manual compaction at level-0 from '\x00+\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00,\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/12/22-22:35:42.055 567 Compacting 1@1 + 10@2 files
+2025/12/22-22:35:42.191 567 Generated table #421@1: 57824 keys, 2219234 bytes
+2025/12/22-22:35:42.353 567 Generated table #422@1: 35312 keys, 2201206 bytes
+2025/12/22-22:35:42.431 567 Generated table #423@1: 2825 keys, 2166554 bytes
+2025/12/22-22:35:42.515 567 Generated table #424@1: 3503 keys, 2167923 bytes
+2025/12/22-22:35:42.606 567 Generated table #425@1: 3380 keys, 2164523 bytes
+2025/12/22-22:35:42.685 567 Generated table #426@1: 22617 keys, 2214971 bytes
+2025/12/22-22:35:42.849 567 Generated table #427@1: 27038 keys, 2262934 bytes
+2025/12/22-22:35:42.968 567 Generated table #428@1: 41175 keys, 2201128 bytes
+2025/12/22-22:35:43.168 567 Generated table #429@1: 104241 keys, 2254781 bytes
+2025/12/22-22:35:43.188 567 Generated table #430@1: 9900 keys, 221654 bytes
+2025/12/22-22:35:43.188 567 Compacted 1@1 + 10@2 files => 20074908 bytes
+2025/12/22-22:35:43.195 567 compacted to: files[ 0 0 10 0 0 0 0 ]
+2025/12/22-22:35:43.195 567 Delete type=2 #408
+2025/12/22-22:35:43.195 567 Delete type=2 #409
+2025/12/22-22:35:43.196 567 Delete type=2 #410
+2025/12/22-22:35:43.196 567 Delete type=2 #411
+2025/12/22-22:35:43.196 567 Delete type=2 #412
+2025/12/22-22:35:43.196 567 Delete type=2 #413
+2025/12/22-22:35:43.196 567 Delete type=2 #414
+2025/12/22-22:35:43.196 567 Delete type=2 #415
+2025/12/22-22:35:43.196 567 Delete type=2 #416
+2025/12/22-22:35:43.196 567 Delete type=2 #417
+2025/12/22-22:35:43.196 567 Delete type=2 #420

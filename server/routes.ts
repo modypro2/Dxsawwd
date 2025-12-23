@@ -167,7 +167,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
     
     console.log(`Support Ticket Check - From: ${message.from}, SenderPhone: ${senderPhone}, ConnectedNumber: ${connectedNumber}, IsPrivateChat: ${isPrivateChat}, IsOwnerChat: ${isOwnerChat}, CanAccess: ${canAccessSupportCommands}, Body: ${message.body}`);
     
-    if ((message.body.startsWith('/support') || message.body.startsWith('.ticket') || message.body.startsWith('.دعم')) && canAccessSupportCommands) {
+    // Check for support commands (with trimmed body for case-insensitive matching)
+    const trimmedBody = message.body.trim();
+    const isSupportCommand = /^(\/support|\.ticket|\.دعم|دعم|support)(\s|$)/i.test(trimmedBody);
+    
+    if (isSupportCommand && canAccessSupportCommands) {
       if (pendingTicket) {
         await storage.deleteTicket(pendingTicket.id);
       }
