@@ -153,6 +153,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
       return null;
     }
 
+    // Exclude WhatsApp broadcast messages (status@broadcast)
+    if (message.from.includes('@broadcast')) {
+      return null;
+    }
+
     // Support Ticket Logic - Allow in private chats from any user
     const pendingTicket = await storage.getPendingTicket(message.from);
     
@@ -169,7 +174,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
     
     // Check for support commands (with trimmed body for case-insensitive matching)
     const trimmedBody = message.body.trim();
-    const isSupportCommand = /^(\/support|\.ticket|\.دعم|دعم|support)(\s|$)/i.test(trimmedBody);
+    
+    // Support command patterns: /support, .ticket, .دعم, دعم, support
+    const isSupportCommand = 
+      /^\/support/i.test(trimmedBody) ||
+      /^\.ticket/i.test(trimmedBody) ||
+      /^\.دعم/i.test(trimmedBody) ||
+      /^دعم/i.test(trimmedBody) ||
+      /^support/i.test(trimmedBody);
+    
+    console.log(`[Support Command Check] Body: "${trimmedBody}" | IsCommand: ${isSupportCommand} | CanAccess: ${canAccessSupportCommands}`);
     
     if (isSupportCommand && canAccessSupportCommands) {
       if (pendingTicket) {
