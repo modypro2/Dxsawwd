@@ -159,33 +159,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
 
     // Support Ticket Logic - Allow in private chats from any user
-    const pendingTicket = await storage.getPendingTicket(message.from);
-    
-    const connectedNumber = whatsappService.getStatus(sessionId).connectedNumber;
-    // Check if it's a private chat (not a group)
     const isPrivateChat = !message.from.includes('@g.us');
-    // Extract phone number from message.from (remove @c.us, @lid, etc)
-    const senderPhone = message.from.replace(/@.*/, '');
-    // Support commands work in any private chat
-    const isOwnerChat = connectedNumber && senderPhone === connectedNumber;
-    const canAccessSupportCommands = isPrivateChat;
     
-    console.log(`Support Ticket Check - From: ${message.from}, SenderPhone: ${senderPhone}, ConnectedNumber: ${connectedNumber}, IsPrivateChat: ${isPrivateChat}, IsOwnerChat: ${isOwnerChat}, CanAccess: ${canAccessSupportCommands}, Body: ${message.body}`);
-    
-    // Check for support commands (with trimmed body for case-insensitive matching)
-    const trimmedBody = message.body.trim();
+    // Check for support commands first (with trimmed body for case-insensitive matching)
+    const trimmedBody = message.body.trim().toLowerCase();
     
     // Support command patterns: /support, .ticket, .دعم, دعم, support
     const isSupportCommand = 
-      /^\/support/i.test(trimmedBody) ||
-      /^\.ticket/i.test(trimmedBody) ||
-      /^\.دعم/i.test(trimmedBody) ||
-      /^دعم/i.test(trimmedBody) ||
-      /^support/i.test(trimmedBody);
+      trimmedBody === '/support' ||
+      trimmedBody === '.ticket' ||
+      trimmedBody === '.دعم' ||
+      trimmedBody === 'دعم' ||
+      trimmedBody === 'support' ||
+      trimmedBody.startsWith('/support ') ||
+      trimmedBody.startsWith('.ticket ') ||
+      trimmedBody.startsWith('.دعم ') ||
+      trimmedBody.startsWith('support ');
     
-    console.log(`[Support Command Check] Body: "${trimmedBody}" | IsCommand: ${isSupportCommand} | CanAccess: ${canAccessSupportCommands}`);
-    
-    if (isSupportCommand && canAccessSupportCommands) {
+    // Only process support commands in private chats
+    if (isSupportCommand && isPrivateChat) {
+      const pendingTicket = await storage.getPendingTicket(message.from);
+      
       if (pendingTicket) {
         await storage.deleteTicket(pendingTicket.id);
       }
@@ -213,8 +207,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
       }, 5 * 60 * 1000);
 
+      console.log(`✅ Support ticket created for: ${message.from}`);
       return responseMsg;
     }
+    
+    // Handle ongoing support ticket conversation
+    const pendingTicket = await storage.getPendingTicket(message.from);
 
     if (pendingTicket && pendingTicket.status === "pending") {
       await storage.updateSupportTicket(pendingTicket.id, { 
